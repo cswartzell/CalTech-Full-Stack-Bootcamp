@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css/client_meeting_schedule.css" />
+</head>
+
+<body>
+    <ul>
+        <li><a href="new_client.html">Sign Up/Login</a></li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="client_portal.html">Client Portal</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <br>
+    <img src="images/henna_logo.webp" alt="Henna Solutions" width="637px" height="280px">
+    <h1>Henna Solutions</h1>
+    <!-- Insert users name from DB here-->
+    <h3>Scheduled Meetings: USERNAME</h3>
+
+    <!-- This is a mockup, static list. This list should be created dynamically from the client meetings DB-->
+
+    <table name= "" style="width:25%; background-color: #e5e5e5; margin-left: 20px;">
+        <tr style=" background-color: cadetblue; ">
+            <th>Meeting Topic:</th>
+            <th>Date:</th>
+            <th>Time:</th>
+            <th>Location:</th>
+        </tr>
+        <tr style="width:75px">
+            <td>Introduction</td>
+            <td>1/1/2023</td>
+            <td>2:00pm PST</td>
+            <td>Main Office</td>
+        </tr>
+        <tr style="width:75px">
+            <td>Site Walkthrough</td>
+            <td>1/4/2023</td>
+            <td>1:00pm PST</td>
+            <td>1233 Main Str, Citytown, WX</td>
+        </tr>
+    </table>
+
+    <h3>Request A Meeting</h3>
+    <form action="" method="post" style="margin-left: 20px;" ;>
+        <b>Meeting Subject:</b>
+        <br>
+        <input type=" text" name="txtMeetingSubject" size="30" placeholder="Revise Plans" required>
+        <br>
+        <b>Requested Date:</b>
+        <input type="date" name="txtRequestedDate" style="margin-left: 14px;" placeholder="01-01-2023" required>
+        <br>
+        <b>Additional Notes:</b>
+        <br>
+        <textarea name="AdditionalNotes" rows="3" cols="50" wrap="hard"></textarea>
+        <br>
+        Call to Confirm? (You will receive an email by default): <input type="checkbox" name="phoneConfirmation">
+        <br>
+        <br>
+        <input type="submit" value="Request Meeting">
+    </form>
+
+
+</body>

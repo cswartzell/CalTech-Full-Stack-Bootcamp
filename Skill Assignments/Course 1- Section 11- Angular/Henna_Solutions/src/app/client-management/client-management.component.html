@@ -1,0 +1,28 @@
+<h2>Manage Clients</h2>
+<div>
+    <form [formGroup]="clientForm" (ngSubmit)="addClientToDB">
+        <p>Name:</p>
+        <input type="text" id="name" placeholder="Jane Doe" formControlName="name">
+        <br>
+        <p>Project:</p>
+        <input type="text" id="project" placeholder="123 Main Street Building" formControlName="project">
+        <br>
+        <p>Phone:</p>
+        <input type="tel" id="phone" placeholder="555-555-5555" formControlName="phone">
+        <br>
+        <input type="email" id="email" placeholder="client@mail.com" formControlName="email">
+        <br>
+        <button type="submit">ADD CLIENT</button>
+        <br>
+    </form>
+</div>
+
+<h2>FORM DATA</h2>
+<p>{{clientForm.value | json}}</p>
+
+<h2>Current Clients</h2>
+<div *ngIf="showClients">
+    <p *ngFor='let client of clients'>
+        {{client.name}} | {{client.project}} | {{client.phone}} | {{client.email}}
+    </p>
+</div>

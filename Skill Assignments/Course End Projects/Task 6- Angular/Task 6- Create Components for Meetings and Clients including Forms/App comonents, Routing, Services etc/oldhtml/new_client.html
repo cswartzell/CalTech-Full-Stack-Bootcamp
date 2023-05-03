@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css/new_client.css" />
+
+    <script>
+        // const email = document.getElementById("txtUserEmail");
+
+        // email.addEventListener("input", (event) => {
+        //     if (email.validity.typeMismatch) {
+        //         email.setCustomValidity("Please enter a valid email address");
+        //     } else {
+        //         email.setCustomValidity("");
+        //     }
+        // });
+    </script>
+</head>
+
+
+
+
+<body>
+    <ul>
+        <!-- Sign Up OR Login should be dynamic and should possibly autoload if info saved/-->
+        <li><a href="new_client.html">Sign Up/Login</a></li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="client_meeting_schedule.html">Client Portal</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <br>
+    <img src="images/henna_logo.webp" alt="Henna Solutions" width="637px" height="280px">
+    <h1> Welcome to Henna Solutions.</h1>
+
+    <h3>Please enter your details to create an account</h3>
+    <!-- Turn off built in form validation first -->
+    <form action="" method="post" style="margin-left: 20px;" novalidate>
+        <br>
+        <label for="txtUserEmail">
+            <span>Full Name: </span>
+            <input type=" text" name="txtFullName" id="txtFullName" placeholder="Jade Smith" required>
+            <span class="error" aria-live="polite"></span>
+        </label>
+        <br>
+        <label for="txtUserEmail">
+            <span>Email address: </span>
+            <input type="text" name="txtUserEmail" id="txtUserEmail" placeholder="address@email.com">
+            <span class="error" aria-live="polite"></span>
+        </label>
+        <br>
+        <label for="txtUserPassword1">
+            <span>Choose Password: </span>
+            <input type="password" name="txtPassword1" id="txtPassword1" placeholder="******" required>
+        </label>
+        <br>
+        <label for="txtUserPassword2">
+            <span>Confirm Password: </span>
+            <input type="password" name="txtPassword2" id="txtPassword2" placeholder="******" required>
+            <span class="error" aria-live="polite"></span>
+        </label>
+        <br>
+        Remember Me: <input type="checkbox" name="rememberUser">
+        <br>
+        <input type="submit" value="REGISTER">
+    </form>
+
+
+    <!-- NOTHING IN THE JS LESSONS EXPLAINED HOW TO DO THIS. I had to do my own research and copy this snippet 
+        from Mozillas (rather excellent) JS docs seeen here https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+        I dont mind doing further research to learn more about how to use these things further, but this skill assessment
+        is asking for us to accomplish tasks that absolutely werent even mentioned in the lessons themselves. 
+
+        No mention on where/how to insert JS into HTML
+        No Mention on listeners
+        No mention on accessing doc elements
+
+        This is a bad assessment, ill matched to presented material
+    
+    -->
+    <script>
+        const form = document.querySelector("form");
+        const email = document.getElementById("txtUserEmail");
+        const emailError = email.nextElementSibling;
+
+        // Attempting to write my own validation to confirm passwords match
+        const password1 = document.getElementById("txtPassword1");
+        const password2 = document.getElementById("txtPassword2");
+        const passwordError = password2.nextElementSibling;
+
+        const uname = document.getElementById("txtFullName");
+        const unameError = uname.nextElementSibling;
+
+        // As per the HTML Specification
+        const emailRegExp =
+            /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        // Now we can rebuild our validation constraint
+        // Because we do not rely on CSS pseudo-class, we have to
+        // explicitly set the valid/invalid class on our email field
+        window.addEventListener("load", () => {
+            // Here, we test if the field is empty (remember, the field is not required)
+            // If it is not, we check if its content is a well-formed email address.
+            const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+            email.className = isValid ? "valid" : "invalid";
+
+        });
+
+        // This defines what happens when the user types in the field
+        email.addEventListener("input", () => {
+            const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+            if (isValid) {
+                email.className = "valid";
+                emailError.textContent = "";
+                emailError.className = "error";
+            } else {
+                email.className = "invalid";
+                // No error checking or hints as users type passwords
+                password1.className = "valid";
+                password2.className = "valid";
+                passwordError.textContent = "";
+                passwordError.className = "error";
+            }
+        });
+
+        // This defines what happens when the user tries to submit the data
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            //Another custom function that tells the user to type ANYTHING for a name
+            //just cant be blank. This is like using required, but we turned that off
+            const unameIsValid = uname.value.length != 0;
+            if (!unameIsValid) {
+                uname.className = "invalid";
+                unameError.textContent = "Enter your name";
+                unameError.className = "error active";
+            } else {
+                uname.className = "valid";
+                unameError.textContent = "";
+                unameError.className = "error";
+            }
+
+            const isValid = email.value.length != 0 && emailRegExp.test(email.value);
+            if (!isValid) {
+                email.className = "invalid";
+                emailError.textContent = "Enter a valid email address";
+                emailError.className = "error active";
+            } else {
+                email.className = "valid";
+                emailError.textContent = "";
+                emailError.className = "error";
+            }
+
+            //Custom attempt to ensure passwords entered (and at least 6 chars) and match 
+            //HEY! I GOT IT TO WORK!
+            const passwordsAreValid = password1.value.length >= 6 && password2.value.length >= 6 && password1.value == password2.value;
+            if (!passwordsAreValid) {
+                password1.className = "invalid";
+                password2.className = "invalid";
+                passwordError.textContent = "Password is under 6 characters or entered passwords do not match";
+                passwordError.className = "error active";
+            } else {
+                password1.className = "valid";
+                password2.className = "valid";
+                passwordError.textContent = "";
+                passwordError.className = "error";
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

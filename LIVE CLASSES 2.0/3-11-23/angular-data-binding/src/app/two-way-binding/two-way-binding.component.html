@@ -1,0 +1,8 @@
+<div>
+    Salary: <input type="text" name="salary" [(ngModel)]="salary" /> Salary is: {{salary}}
+    <br>
+    <!-- Obviously the following doesnt work. Its not two way -->
+    <!-- Also, placeholder doesnt overwrite if there is a value -->
+    Age: <input type="text" name="age" placeholder="enter your age" [value]="age" /> Age is: {{age}}
+    <br>
+</div>

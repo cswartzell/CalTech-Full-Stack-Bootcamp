@@ -1,0 +1,11 @@
+<nav>
+  <ul>
+    <!-- <li><a routerLink="/home">Home</a></li> -->
+    <li><a routerLink="/products">Products</a></li>
+    <li><a routerLink="/profile" [queryParams]="{name: 'Cameron Swartzell', email: 'csswartzell@gmail.com'}">Profile</a>
+    </li>
+    <li><a routerLink="/news">News</a></li>
+  </ul>
+</nav>
+<app-home [name]="appName"></app-home>
+<router-outlet></router-outlet>

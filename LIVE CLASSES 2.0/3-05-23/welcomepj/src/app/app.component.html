@@ -1,0 +1,21 @@
+<app-header></app-header>
+<h2>Welcome to angular project</h2>
+<div>
+  <!-- <div id="a">A</div>
+    <div id="b">B</div> -->
+
+  <!-- Double curly braces is data binding. We are using the vals of the named attributes -->
+  <!-- from the matching class object, and injecting them here -->
+  <p>First Name: {{first_name}}</p>
+  <p>Last Name: {{last_name}}</p>
+  <p>Age: {{age}}</p>
+  <p>Birthday: {{birthday}}</p>
+  <p>Alive: {{alive}}</p>
+  <!-- Ah. if undefined it gives the CURRENT datetime -->
+  <p>Death: {{death_date}}</p>
+  <!-- <my-tag></my-tag> -->
+  <br /><br />
+  <p>Look, our child component loaded below this line: </p>
+  <app-child></app-child>
+</div>
+<app-footer></app-footer>

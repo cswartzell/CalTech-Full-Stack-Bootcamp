@@ -1,0 +1,17 @@
+<div>
+    <h2>Product Details</h2>
+    <!-- <p>PID: {{product.pid}}, Name: {{product.pname}}, Price: ${{product.price}}</p> -->
+    <!-- <table border="1px"> -->
+    <table>
+        <tr>
+            <th>PID: </th>
+            <th>Name: </th>
+            <th>Price: $</th>
+        </tr>
+        <tr *ngFor="let product of products">
+            <td>{{product.pid}}</td>
+            <td>{{product.pname}}</td>
+            <td>{{product.price}}</td>
+        </tr>
+    </table>
+</div>

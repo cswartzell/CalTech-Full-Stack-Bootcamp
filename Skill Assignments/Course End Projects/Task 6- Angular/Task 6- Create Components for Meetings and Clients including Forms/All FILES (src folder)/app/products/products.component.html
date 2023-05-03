@@ -1,0 +1,36 @@
+<h2>Add Products</h2>
+<div>
+    <form [formGroup]="productForm" (ngSubmit)="addProductToDB">
+        <p>Product ID:</p>
+        <input type="text" id="productID" placeholder="eg: 101" formControlName="pid">
+        <br>
+        <p>Product Name:</p>
+        <input type="text" id="productName" placeholder="Product" formControlName="name">
+        <br>
+        <p>Product Price:</p>
+        <input type="text" id="productPrice" placeholder="$0.00" formControlName="price">
+        <br>
+        <p>Product Rating:</p>
+        <input type="text" id="productRating" placeholder="4.4" formControlName="rating">
+        <br>
+
+        <p>Product Category:</p>
+        <select formControlName="category">
+            <option *ngFor="let category of categories">
+                {{category.title}}
+            </option>
+        </select>
+        <button type="submit">ADD PRODUCT</button>
+        <br>
+    </form>
+</div>
+
+<h2>FORM DATA</h2>
+<p>{{productForm.value | json}}</p>
+
+<h2>Products And Services</h2>
+<div *ngIf="showProducts">
+    <p *ngFor='let product of products'>
+        {{product.pid}} | {{product.name}} | {{product.price}} | {{product.ratings}}
+    </p>
+</div>

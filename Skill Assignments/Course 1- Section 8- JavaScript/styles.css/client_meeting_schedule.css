@@ -1,0 +1,64 @@
+        ul {
+            list-style-type: none;
+            font-family: Arial;
+        }
+
+        li {
+            float: left;
+            margin-right: auto;
+            margin-left: 15px;
+        }
+
+        table {
+            width: 25%;
+            background-color: #e5e5e5;
+            margin-left: 20px;
+        }
+
+        .tableHeader {
+            background-color: cadetblue;
+        }
+
+        .meetingRow {
+            width: 75px
+        }
+
+        #requestMeeting {
+            action: "";
+            method: "post";
+            margin-left: 20px;
+
+        }
+
+        ol {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            padding: 12px;
+        }
+
+        /* This is our style for the invalid fields */
+        input.invalid {
+            border-color: #900;
+            background-color: #fdd;
+        }
+
+        input:focus.invalid {
+            outline: none;
+        }
+
+        /* This is the style of our error messages */
+        .error {
+            width: 100%;
+            padding: 0;
+
+            font-size: 80%;
+            color: white;
+            background-color: #900;
+            border-radius: 0 0 5px 5px;
+            box-sizing: border-box;
+        }
+
+        .error.active {
+            padding: 0.3em;
+        }

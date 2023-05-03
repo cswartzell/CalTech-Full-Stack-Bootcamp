@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            padding: 16px;
+            background-color: #e5e5e5;
+            border-radius: 12px;
+        }
+
+        input[type=text] {
+            width: auto;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            padding: 8px;
+            margin: 8px;
+        }
+
+        input[type=password] {
+            width: auto;
+            display: inline;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            padding: 8px;
+            margin: 8px;
+        }
+
+        input[type=submit] {
+            background-color: gainsboro;
+            width: auto;
+            border: none;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>Plese log in to our oh-so secure WebApp</h3>
+        <form action="" method="post">
+            <img src="images/login.png" alt="log in" width="30px" height="30px">
+            <br>
+            <b>User Name:</b>
+            <br>
+            <input type="text" name="txtUserName" placeholder="address@email.com" required>
+            <br>
+            <b>Password:</b>
+            <br>
+            <input type="password" name="txtPassword" placeholder="******" required>
+            <br>
+            Remember Me: <input type="checkbox" name="rememberUser">
+            <br>
+            <a href="register.html">Register a New Account</a>
+            <br>
+            <input type="submit" value="LOGIN">
+        </form>
+    </div>
+</body>
+
+</html>

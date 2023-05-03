@@ -1,0 +1,10 @@
+<div>
+    <h2>One way data binding using property binding</h2>
+    <input type="text" value="last_name" /><br>
+    <input type="text" [value]="last_name" /><br>
+    <p [innerText]="a_dif_binding"></p> 
+    <input type="button" value="basic button" disabled /> <!-- Vanilla HTML -->
+    <input type="button" value="basic button" disabled={{button_status}}/> <!-- This doesnt, as disabled= doesnt TAKE a string. It NEEDS a boolean value and string  -->
+    <input type="button" value="basic button" [disabled]="button_status"/> <!-- This works -->
+    <!-- This works -->
+</div>

@@ -1,0 +1,17 @@
+ul {
+    list-style-type: none;
+    font-family: Arial;
+}
+
+li {
+    float: left;
+    margin-right: auto;
+    margin-left: 15px;
+}
+
+h3 {
+    margin-left: 8px
+}
+
+form {
+    margin-left: 20px;}

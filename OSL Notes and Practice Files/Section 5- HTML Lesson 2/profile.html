@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 500px;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 12px;
+            background: linear-gradient(gainsboro, white);
+            /* animation: rotateCard 3s infinite; */
+            animation: rotateCard 2s cubic-bezier(0.075, 0.82, 0.165, 1) 1 normal;
+        }
+
+
+        img {
+            width: 340;
+            height: 440;
+            border-radius: 5%;
+
+        }
+
+        /* adding an animation */
+        @keyframes rotateCard {
+            50% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nice. Learning how to center a div -->
+    <div>
+        <h2>Cameron Swartzell</h2>
+
+        <img src="Images\AuroraConnects_Headshots_600x800_Swartzell.jpg" alt="Cameron Swartzell" width="170"
+            height="220">
+        <br>
+        <a href="https://www.linkedin.com/in/cameron-swartzell-82672b29/">Layabout:</a>
+        <a href="mailto: cswartzell@gmail.com">cswartzell@gmail.com</a>
+        <br>
+        <br>
+        <b><a href="">Manage Addresses</a></b>
+        <br>
+        <b><a href="">Manage Orders</a></b>
+        <br>
+        <b><a href="">Manage Membership</a></b>
+        <br>
+        <br>
+        <button>Update Profile</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<h2>Manage Meetings</h2>
+<div>
+    <form [formGroup]="meetingForm" (ngSubmit)="addMeetingToDB">
+        <p>Date:</p>
+        <input type="date" id="date" placeholder="1-1-2001" formControlName="date">
+        <br>
+        <p>Time:</p>
+        <input type="time" id="time" placeholder="12:45p" formControlName="time">
+        <br>
+        <p>Attending:</p>
+        <input type="text" id="attending" placeholder="Client Names" formControlName="attending">
+        <br>
+        <p>Meeting Type:</p>
+        <select formControlName="category">
+            <option *ngFor="let category of categories">
+                {{category.title}}
+            </option>
+        </select>
+        <button type="submit">ADD MEETING</button>
+        <br>
+    </form>
+</div>
+
+<h2>FORM DATA</h2>
+<p>{{meetingForm.value | json}}</p>
+
+<h2>Current Meetings</h2>
+<div *ngIf="showMeetings">
+    <p *ngFor='let meeting of meetings'>
+        {{meeting.date}} | {{meeting.time}} | {{meeting.attending}} | {{meeting.category}}
+    </p>
+</div>

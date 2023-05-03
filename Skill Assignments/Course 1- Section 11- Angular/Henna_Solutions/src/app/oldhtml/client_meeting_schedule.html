@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css/client_meeting_schedule.css" />
+</head>
+
+<body>
+    <ul>
+        <li><a href="new_client.html">Sign Up/Login</a></li>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="client_portal.html">Client Portal</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <br>
+    <img src="images/henna_logo.webp" alt="Henna Solutions" width="637px" height="280px">
+    <h1>Henna Solutions</h1>
+    <!-- Insert users name from DB here-->
+    <h3>Scheduled Meetings: USERNAME</h3>
+
+    <!-- This is a mockup, static list. This list should be created dynamically from the client meetings DB-->
+
+    <table name"meetingTable>
+        <tr class="tableHeader">
+            <th>Meeting Topic:</th>
+            <th>Date:</th>
+            <th>Time:</th>
+            <th>Location:</th>
+        </tr>
+        <tr class="meetingRow">
+            <td>Introduction</td>
+            <td>1/1/2023</td>
+            <td>2:00pm PST</td>
+            <td>Main Office</td>
+        </tr>
+        <tr class="meetingRow">
+            <td>Site Walkthrough</td>
+            <td>1/4/2023</td>
+            <td>1:00pm PST</td>
+            <td>1233 Main Str, Citytown, WX</td>
+        </tr>
+    </table>
+
+    <h3>Request A Meeting</h3>
+
+
+    <!-- Again, this assessment is pretty absurd given the content. You want what, a regex date validation? 
+        Great. Maybe the learning content should cover that. Or even mention regex once?-->
+
+
+    <form id="requestMeeting" novalidate>
+        <b>Meeting Subject:</b>
+        <br>
+        <input id="meetingSubject" type="text" name="txtMeetingSubject" size="30" placeholder="Revise Plans" required>
+        <br>
+        <b>Requested Date:</b>
+        <!-- Cant really test this using a date input method already. Switching to text -->
+        <!-- <input type="date" name="txtRequestedDate" style="margin-left: 14px;" placeholder="01-01-2023" required>
+        <br> -->
+        <input type="text" name="requestDate" id="requestDate" placeholder="DD-MM-YY">
+        <span class="error" aria-live="polite"></span>
+        <br>
+        <b>Additional Notes:</b>
+        <br>
+        <textarea name="AdditionalNotes" rows="3" cols="50" wrap="hard"></textarea>
+        <br>
+        Call to Confirm? (You will receive an email by default): <input type="checkbox" name="phoneConfirmation">
+        <br>
+        <br>
+        <input type="submit" value="Request Meeting">
+    </form>
+
+    <script>
+        const form = document.querySelector("form");
+        const rdate = document.getElementById("requestDate");
+        const rdateError = rdate.nextElementSibling;
+        // const dateRE = /^([0-9]|[0-2][0-9]|(3)[0-1])(\-|\/|\.)(([0-9]|(0)[0-9])|((1)[0-2]))(\-|\/|\.)\d{2}$/;
+        const dateRE = /^([0-9]|[0-2][0-9]|(3)[0-1])(\-|\/|\.)(([0-9]|(0)[0-9])|((1)[0-2]))(\-|\/|\.)(?<!\d)(\d{2}|\d{4})(?!\d)$/;
+        // If I had more time, it would probably be good to check the the given date is sometime in the future, 
+        // Possibly more than 24 hours after the current date. This is a good start though. 
+
+        //after a lot of testing, using the ^ and & at the beginning and end wasnt working. More research
+        // looks just like MANY examples online. 
+
+        // modified to allow single digit month/days. We can surely handle thant on input
+        // will also accept "." or "/" as the divider, lets make it easy for users. We can sus this
+        // out ourselves. I hate cumbersome date pickers. We just want 3 ints within their range, we can add 
+        // the leading zero ourselves later
+
+        // This defines what happens when the user tries to submit the data
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const isValid = rdate.value.match(dateRE);
+            if (!isValid) {
+                rdate.className = "invalid";
+                rdateError.textContent = "Enter a valid date";
+                rdateError.className = "error active";
+            } else {
+                rdate.className = "valid";
+                rdateError.textContent = "";
+                rdateError.className = "error";
+            }
+
+        });
+    </script>
+
+
+</body>

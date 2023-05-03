@@ -1,0 +1,10 @@
+<div>
+    <p>One Way Data Binding using property binding</p>
+    <br><input type="text" value="fname"> //Normal html
+    <br><input type="text" [value]="fname"> //PROPERTY BINDING
+    <p [innerText]="fname"></p> //Uneditable p tag
+    <br>
+    <br><input type="button" disabled={{buttonToggle1}} value="togglable button">
+    <br><input type="button" [disabled]="buttonToggle2" value="togglable button">
+    <br><input type="button" [disabled]="buttonToggle3" value="togglable button">
+</div>

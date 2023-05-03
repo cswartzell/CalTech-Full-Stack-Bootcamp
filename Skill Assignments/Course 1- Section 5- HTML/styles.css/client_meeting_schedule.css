@@ -1,0 +1,17 @@
+        ul {
+            list-style-type: none;
+            font-family: Arial;
+        }
+
+        li {
+            float: left;
+            margin-right: auto;
+            margin-left: 15px;
+        }
+
+        ol {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            padding: 12px;
+        }

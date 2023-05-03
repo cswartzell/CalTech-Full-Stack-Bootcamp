@@ -1,0 +1,59 @@
+Open Powershell
+Navigate to/create project folder
+mysql -u root -p
+Type MySQL password
+
+SHOW databases;
+CREATE DATABASE Henna_Solutions;
+use Henna_Solutions;
+
+CREATE TABLE Clients(
+cid int  PRIMARY KEY AUTO_INCREMENT,
+first_name varchar(255),
+last_name varchar(255),
+title varchar(255),
+phone varchar(255),
+email varchar(255)
+);
+
+CREATE TABLE Client_meetings(
+    mid int PRIMARY KEY AUTO_INCREMENT,
+    m_date DATE NOT NULL,
+    m_time TIME NOT NULL,
+    title  VARCHAR(255) DEFAULT 'None',
+    loc  VARCHAR(255) DEFAULT 'Via Zoom',
+    cid int,
+    CONSTRAINT fk_client_meeting FOREIGN KEY (cid)
+    REFERENCES Clients(cid)
+);
+
+INSERT INTO Clients (cid, first_name, last_name, title, phone, email) VALUES(null, 'Cameron', 'Swartzell', 'Mr.', '555-555-5555', 'csswartzell@gmail.com');
+INSERT INTO Clients VALUES(null, 'John', 'Smith', 'Dr.', '555-555-5558', 'drsmith@email.com');
+#Missed the () after values... as we are passing args... TO a function called 'values'? 
+#Also missed () around explicit list of positional args on the first line of this pair
+
+INSERT INTO Client_meetings (mid, m_date, m_time, title, cid) VALUES(null, '2023-02-11', '20:15:00', 'Welcome Meeting', 1);
+#note, leaving the loc blank above to test positional arguments
+INSERT INTO Client_meetings VALUES(null, '2023-02-12', '04:00:00', 'Strategic Planning', 'Main Office', 1);
+INSERT INTO Client_meetings VALUES(null, '2023-02-12', '04:00:00', 'Strategic Planning', 'Main Office', 3);
+#Missed that TIME and DATE types still require single quotes around values on input
+#should fail, as there shouldnt be a client with cid = 3
+
+
+INSERT INTO Client_meetings (mid, m_date, m_time) VALUES(null, '2023-02-11', '20:15:00');
+
+SELECT * FROM Client_meetings;
+UPDATE Client_meetings SET title = 'Important Meeting' WHERE title = 'Useless Double Booking';
+UPDATE Client_meetings SET m_time = '05:30:00' WHERE m_date = '2222-02-12';
+INSERT INTO Client_meetings VALUES(null, '2023-02-12', '04:00:00', 'Useless Double Booking', 'Main Office', 2);
+#Should pass, but make no changes
+
+SELECT * FROM Client_meetings;
+DELETE FROM Client_meetings WHERE cid = 2;
+
+SHOW TABLES;
+SELECT * FROM Clients;
+SELECT * FROM Client_meetings;
+
+SELECT title, m_date, m_time, loc FROM Client_meetings WHERE cid = 1;
+SELECT title, first_name, last_name FROM Clients WHERE title = 'Dr.' OR 'Phd.';
