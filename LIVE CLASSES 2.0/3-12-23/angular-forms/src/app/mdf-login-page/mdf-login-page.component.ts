@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MyService } from '../custom.service';
 import { LoginService } from '../login.service';
 @Component({
@@ -9,14 +9,14 @@ import { LoginService } from '../login.service';
 })
 export class MdfLoginPageComponent {
 
-  constructor(public ls:LoginService){}     // pull the object using DI concept. 
+  constructor(public ls: LoginService) { }     // pull the object using DI concept. 
   loginRef = new FormGroup({
-    email:new FormControl("",[Validators.required,Validators.pattern("\[a-z,0-9]+@[a-z,0-9]+.com")]),
-    password:new FormControl("",[Validators.required,Validators.minLength(3)])
+    email: new FormControl("", [Validators.required, Validators.pattern("\[a-z,0-9]+@[a-z,0-9]+.com")]),
+    password: new FormControl("", [Validators.required, Validators.minLength(3)])
   });
 
-  msg:string="";
-  signIn(){
+  msg: string = "";
+  signIn() {
     let login = this.loginRef.value;
     //console.log(login);
     // if(login.email=="raj@gmail.com" && login.password=="123"){
@@ -31,10 +31,10 @@ export class MdfLoginPageComponent {
     //   this.msg = "failure try once again"
     // }
 
-    
-    if(this.ls.checkUser(login)){
-      this.msg="successfully login"
-    }else {
+    //handled by custom service
+    if (this.ls.checkUser(login)) {
+      this.msg = "successfully login"
+    } else {
       this.msg = "failure try once again"
     }
     this.loginRef.reset();

@@ -19,7 +19,7 @@ import { LoginService } from './login.service';
     AppRoutingModule,FormsModule,
     ReactiveFormsModule
   ],
-  providers: [LoginService],    // provide service class details 
+  providers: [LoginService],    // provide se rvice class details 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

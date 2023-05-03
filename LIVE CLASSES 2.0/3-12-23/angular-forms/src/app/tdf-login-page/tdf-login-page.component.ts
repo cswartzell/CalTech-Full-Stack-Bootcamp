@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { MyService } from '../custom.service';
 import { LoginService } from '../login.service';
 @Component({
@@ -9,10 +9,10 @@ import { LoginService } from '../login.service';
 })
 export class TdfLoginPageComponent {
 
-  constructor(private ls:LoginService){}     // pull the object using DI concept. 
+  constructor(private ls: LoginService) { }     //  pull the object using DI concept. 
 
-  msg:string="";
-  signIn(loginRef:NgForm){
+  msg: string = "";
+  signIn(loginRef: NgForm) {
     let login = loginRef.value;
     //console.log(login);
     // if(login.email=="raj@gmail.com" && login.password=="123"){
@@ -22,16 +22,23 @@ export class TdfLoginPageComponent {
     //    // alert("failure try once again");
     //    this.msg = "failure try once again"
     // }
-        // let cs = new MyService();
+    // let cs = new MyService();
     // if(cs.checkUser(login)){
     //   this.msg="successfully login"
     // }else {
     //   this.msg = "failure try once again"
     // }
-    
-    if(this.ls.checkUser(login)){
-      this.msg="successfully login"
-    }else {
+
+    //REPLACE WITH CUSTOM SERVICE
+    // if(this.ls.checkUser(login)){
+    //   this.msg="successfully login"
+    // }else {
+    //   this.msg = "failure try once again"
+    // }
+    let cs = new MyService();
+    if (cs.checkUser(login)) {
+      this.msg = "successfully login"
+    } else {
       this.msg = "failure try once again"
     }
     loginRef.reset();
