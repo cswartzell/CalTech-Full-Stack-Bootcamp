@@ -8,3 +8,7 @@ obj1.then(function (data) {
 }).catch(function (error) {
     console.log("catch called..." + error)
 }) 
+
+
+//Ok. Thats neat. This is all it takes
+fetch("https://fakestoreapi.com/products").then(result=>result.json()).then(result=>console.log(result)).catch(error=>console.log(error));
