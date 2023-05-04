@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -8,9 +9,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
   //form builder method
-  loginRef?: FormGroup;
+  loginRef!: FormGroup;
 
-  constructor(public formBuilder: FormBuilder) { } //DI for FormBuilder
+  constructor(public formBuilder: FormBuilder, public authService: AuthService) { } //DI for FormBuilder
   ngOnInit(): void {
     this.loginRef = this.formBuilder.group({
       emailid: [],
@@ -18,4 +19,13 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  signIn() {
+    let login = this.loginRef.value;
+    if (this.authService.signIn(login)) {
+      alert("logged in")
+    } else {
+      alert("Failed to Log In. Check email and password")
+    }
+    this.loginRef.reset();
+  }
 }
