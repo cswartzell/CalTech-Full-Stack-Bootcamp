@@ -1,7 +1,9 @@
 <div>
-    <input type="button" value="Load Data" (click)="loadProductData()"/>
-    <br/><hr/>
-    <div *ngFor="let product of products">
-        <img src={{product.thumbnail}}>
-    </div>
+    <input type="button" value="Load Product Data" (click)="loadProductData()" />
+    <br />
+    <hr />
+    <span *ngFor="let product of products">
+        <img src={{product.thumbnail}} width="200px" height="200px" />
+        <span>Name :{{product.title}} Price : {{product.price}}</span>
+    </span>
 </div>
