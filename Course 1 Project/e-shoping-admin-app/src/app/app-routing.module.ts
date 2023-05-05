@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { AuthGuard } from './auth/auth.guard';
 import { ContactusComponent } from './contactus/contactus.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LogoutComponent } from './logout/logout.component';
 import { SigninComponent } from './signin/signin.component';
 
 
@@ -10,7 +13,9 @@ import { SigninComponent } from './signin/signin.component';
 const routes: Routes = [
   { path: "aboutus", component: AboutusComponent },
   { path: "contactus", component: ContactusComponent },
-  { path: "signin", component: SigninComponent }
+  { path: "login", component: SigninComponent },
+  { path: "logout", component: LogoutComponent },
+  { path: "home", component: DashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

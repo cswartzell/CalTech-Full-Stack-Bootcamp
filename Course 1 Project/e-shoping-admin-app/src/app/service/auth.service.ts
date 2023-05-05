@@ -8,7 +8,7 @@ export class AuthService {
 
   constructor() { }
 
-  signIn(admin: Admin): boolean {
-    return (admin.emailid == "admin@gmail.com" && admin.password == "123");
+  signIn(login: Admin): boolean {
+    return (login.emailid == "admin@gmail.com" && login.password == "123");
   }
 }
