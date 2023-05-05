@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutusComponent } from './aboutus/aboutus.component';
-import { AuthGuard } from './auth/auth.guard';
-import { ContactusComponent } from './contactus/contactus.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LogoutComponent } from './logout/logout.component';
-import { SigninComponent } from './signin/signin.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { AuthGuard } from './service/auth.guard';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 //Here we write navigation rules:
@@ -14,8 +15,13 @@ const routes: Routes = [
   { path: "aboutus", component: AboutusComponent },
   { path: "contactus", component: ContactusComponent },
   { path: "login", component: SigninComponent },
-  { path: "logout", component: LogoutComponent },
-  { path: "home", component: DashboardComponent, canActivate: [AuthGuard] }
+
+  {
+    path: "home", component: DashboardComponent, canActivate: [AuthGuard], children: [
+      { path: "product", component: ProductComponent },
+      { path: "logout", component: LogoutComponent },
+    ]
+  }
 ];
 
 @NgModule({

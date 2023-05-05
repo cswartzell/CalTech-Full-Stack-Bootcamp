@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -19,8 +19,8 @@ export class LandingComponent implements OnInit {
     AuthService
     this.authService.isLoggedIn.subscribe({
       next: (result: any) => {
-        this.flag=result
+        this.flag = result
       }
     })
-  } *
+  }
 }
