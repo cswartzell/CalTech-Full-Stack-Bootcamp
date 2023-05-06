@@ -14,18 +14,31 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  loadProducts() {
     this.productService.loadAllProductDetails().subscribe({
       next: (result: any) => {
         this.products = result
       },
-      error: (error: any) => {
-
-      },
-      complete: () => {
-
-      }
-
+      error: (error: any) => { },
+      complete: () => { }
     })
   }
 
+  deleteProduct(pid: any) {
+    // console.log(pid);
+    let flag = confirm("Delete Product? No Way To Undo");
+    if (flag) {
+      this.productService.deleteProductById(pid).subscribe({
+        next: (result: any) => console.log(result),
+        error: (error: any) => console.log(error),
+        complete: () => {
+          console.log("Product with PID: " + pid + " Deleted")
+          this.loadProducts();
+        }
+      })
+    }
+  }
 }

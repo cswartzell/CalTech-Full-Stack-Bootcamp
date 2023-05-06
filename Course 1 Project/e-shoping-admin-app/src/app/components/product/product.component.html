@@ -25,6 +25,7 @@
             <td>{{product.brand}}</td>
             <td>{{product.category}}</td>
             <td><img src="{{product.thumbnail}}" width="130px" height="100px"></td>
+            <td><input type="button" value="Delete Product" (click)="deleteProduct(product.id)"></td>
         </tr>
     </table>
 </div>

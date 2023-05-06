@@ -15,5 +15,8 @@ export class ProductService {
     return this.httpClient.get<Product[]>(this.baseURL);
   }
 
+  deleteProductById(pid:any):Observable<any> {
+   return this.httpClient.delete(this.baseURL+"/"+pid)
+  }
 
 }
