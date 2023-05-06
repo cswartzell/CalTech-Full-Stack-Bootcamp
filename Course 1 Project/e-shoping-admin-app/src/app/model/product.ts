@@ -1,6 +1,7 @@
 // map the json file or backend json data 
 export class Product {
-    constructor(public id: number,
+    constructor(
+        public id: number,
         public title: string,
         public description: string,
         public price: number,
@@ -10,7 +11,8 @@ export class Product {
         public brand: string,
         public category: string,
         public thumbnail: string,
-        // public images: string[]
+        public images: string[],
+        public qty: number
     ) {
 
     }
